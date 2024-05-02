@@ -11,26 +11,29 @@ function Login() {
 	return (
 		<div className="full">
 			<div className="container row m-auto align-items-center">
-				<form
-					action=""
-					className="col d-flex flex-column justify-content-center mr-10"
-				>
-					<Input
-						label="Nome de Usuário"
-						placeholder="sn4k3rx"
-						className="mb-3"
-					/>
-					<Input
-						label="Senha"
-						placeholder="********"
-						className="mb-3"
-						afterIcon=""
-					/>
-					<Button
-						label="Login"
-						action={oi}
-					/>
-				</form>
+				<div className="col">
+					<h1>Seja bem vindo</h1>
+					<form
+						action=""
+						className=" d-flex flex-column justify-content-center mr-10"
+					>
+						<Input
+							label="Nome de Usuário"
+							placeholder="sn4k3rx"
+							className="mb-3"
+						/>
+						<Input
+							label="Senha"
+							placeholder="********"
+							className="mb-3"
+							afterIcon=""
+						/>
+						<Button
+							label="Login"
+							action={oi}
+						/>
+					</form>
+				</div>
 
 				<div className="col justify-content-center img">
 					<img
