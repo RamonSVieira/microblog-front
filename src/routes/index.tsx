@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Input from "../components/Input";
 import Login from "../pages/Login";
+import { ProtectedLayout } from "./protected";
+import Feed from "../pages/Feed/indext";
 
 function Rotas() {
 	return (
@@ -9,6 +10,14 @@ function Rotas() {
 				<Route
 					path="/login"
 					element={<Login />}
+				/>
+				<Route
+					path="/profile"
+					element={
+						<ProtectedLayout>
+							<Feed />
+						</ProtectedLayout>
+					}
 				/>
 			</Routes>
 		</BrowserRouter>

@@ -1,5 +1,5 @@
 interface ButtonProps {
-	action: () => void;
+	action?: () => void;
 	label: string;
 	className?: string;
 }

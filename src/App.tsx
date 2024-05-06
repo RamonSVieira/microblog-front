@@ -1,9 +1,12 @@
+import { AuthProvider } from "./context/AuthProvider";
 import Rotas from "./routes";
 
 function App() {
 	return (
 		<>
-			<Rotas />
+			<AuthProvider>
+				<Rotas />
+			</AuthProvider>
 		</>
 	);
 }

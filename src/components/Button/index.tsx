@@ -5,7 +5,7 @@ function Button(props: ButtonProps) {
 		<button
 			className={`br-button block primary mb-3 ${props.className}`}
 			onClick={props.action}
-			type="button"
+			type="submit"
 		>
 			{props.label}
 		</button>
