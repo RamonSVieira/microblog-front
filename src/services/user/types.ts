@@ -1,4 +1,4 @@
-interface LoginResponse {
+export interface LoginResponse {
 	access: string;
 	token: string;
 	user: {
@@ -8,4 +8,8 @@ interface LoginResponse {
 	};
 }
 
-export default LoginResponse;
+export interface RegisterResponse {
+	id: number;
+	username: string;
+	nome: string;
+}

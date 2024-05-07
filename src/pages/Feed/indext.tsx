@@ -1,5 +1,5 @@
 function Feed() {
-	return <div>oi</div>;
+	return <div>FEED</div>;
 }
 
 export default Feed;

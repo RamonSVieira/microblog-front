@@ -24,10 +24,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 			refresh: response.token,
 		};
 
-		console.log(response);
-
-		console.log(payload);
-
 		setUser(payload);
 		setUserLocalStorage(payload);
 	}

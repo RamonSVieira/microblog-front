@@ -8,19 +8,22 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/useAuth";
 
 function Login() {
+	const navigate = useNavigate();
+	const auth = useAuth();
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
 
-	const navigate = useNavigate();
-	const auth = useAuth();
-
 	async function dataHandler(data: any) {
 		try {
-			auth.authenticate(data.username, data.password);
-			navigate("/profile");
+			await auth.authenticate(data.username, data.password);
+
+			if (auth.access) {
+				navigate("/feed");
+			}
 		} catch (error) {
 			console.log("Email ou senha invalida");
 		}
