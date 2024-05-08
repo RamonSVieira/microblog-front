@@ -1,11 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider/useAuth";
+import { useEffect } from "react";
 
 export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
 	const auth = useAuth();
+	const navigate = useNavigate();
 
-	if (!auth.access) {
-		return <h1>VOCÊ NÃO ESTÁ LOGADO</h1>;
-	}
+	useEffect(() => {
+		if (!auth.access) {
+			navigate("/login");
+		}
+	}, [auth.access, navigate]);
 
-	return children;
+	return auth.access ? children : null;
 };

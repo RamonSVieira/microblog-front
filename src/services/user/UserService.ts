@@ -9,6 +9,8 @@ class UserService {
 				password,
 			});
 
+			console.log(response);
+
 			if (response.status === 200) {
 				return response.data as LoginResponse;
 			} else {

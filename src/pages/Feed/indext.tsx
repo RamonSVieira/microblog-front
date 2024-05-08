@@ -1,5 +1,12 @@
+import Header from "../../components/Header";
+
 function Feed() {
-	return <div>FEED</div>;
+	return (
+		<div>
+			<Header />
+			FEED
+		</div>
+	);
 }
 
 export default Feed;
