@@ -16,19 +16,19 @@ function Rotas() {
 					path="/register"
 					element={<Register />}
 				/>
-				{/* <Route
+				<Route
 					path="/feed"
 					element={<Feed />}
-				/> */}
+				/>
 
-				<Route
+				{/* <Route
 					path="/feed"
 					element={
 						<ProtectedLayout>
 							<Feed />
 						</ProtectedLayout>
 					}
-				/>
+				/> */}
 			</Routes>
 		</BrowserRouter>
 	);
