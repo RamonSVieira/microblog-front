@@ -1,0 +1,9 @@
+.full{
+    background: linear-gradient(90deg, rgba(219,232,251,1) 70%, rgba(44,96,138,1) 70%);
+}
+
+.container{
+    height: 100vh;
+    gap: 120px;
+
+}
