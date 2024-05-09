@@ -1,4 +1,4 @@
-export interface FeedResponse {
+export interface IFeed {
 	id: number;
 	titulo: string;
 	imagem: string;
@@ -9,4 +9,11 @@ export interface FeedResponse {
 		nome: string;
 	};
 	publicado_em: string;
+}
+
+export interface IFeedResponse {
+	count: number;
+	next: string;
+	previous: string;
+	results: IFeed[];
 }

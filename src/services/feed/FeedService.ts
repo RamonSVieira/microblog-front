@@ -1,15 +1,13 @@
 import axiosInstance from "../common/axiosInstance";
-import { FeedResponse } from "./types";
+import { IFeedResponse } from "./types";
 
 class FeedService {
-	async get(page: number): Promise<FeedResponse> {
+	async get(page: number): Promise<IFeedResponse> {
 		try {
 			const response = await axiosInstance.get(`/publicacao/?${page}`);
 
-			console.log(response);
-
 			if (response.status === 200) {
-				return response.data as FeedResponse;
+				return response.data as IFeedResponse;
 			} else {
 				throw new Error("Falha");
 			}

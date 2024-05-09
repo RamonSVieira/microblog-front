@@ -21,9 +21,7 @@ function Login() {
 		try {
 			await auth.authenticate(data.username, data.password);
 
-			if (auth.access) {
-				navigate("/feed");
-			}
+			navigate("/feed");
 		} catch (error) {
 			console.log("Email ou senha invalida");
 		}

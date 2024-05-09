@@ -18,6 +18,6 @@ export function getUserLocalStorage() {
 }
 
 export async function LoginRequest(username: string, password: string) {
-	const resquest = UserService.login(username, password);
+	const resquest = await UserService.login(username, password);
 	return resquest;
 }

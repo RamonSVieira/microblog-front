@@ -9,8 +9,6 @@ class UserService {
 				password,
 			});
 
-			console.log(response);
-
 			if (response.status === 200) {
 				return response.data as LoginResponse;
 			} else {
@@ -32,8 +30,6 @@ class UserService {
 				username,
 				senha,
 			});
-
-			console.log(response);
 
 			if (response.status === 201) {
 				return response.data as RegisterResponse;
