@@ -1,20 +1,14 @@
+import { ICard } from "./types";
+import FriendlyDate from "../../utils/FriendlyDate";
+import { useAuth } from "../../context/AuthProvider/useAuth";
+import { Link } from "react-router-dom";
 import "./style.css";
 
-interface ICard {
-	titulo: string;
-	imagem: string;
-	descricao: string;
-	autor: {
-		id: number;
-		username: string;
-		nome: string;
-	};
-	publicado_em: string;
-}
-
 export default function Card(props: ICard) {
+	const auth = useAuth();
+
 	return (
-		<div className="col-3">
+		<div className="col-3 px-1">
 			<div className="br-card hover h-fixed">
 				<div className="card-header d-flex flex-column">
 					<span
@@ -23,7 +17,7 @@ export default function Card(props: ICard) {
 					>
 						<span className="content flex-fill">
 							<img
-								className="rounder-md"
+								className="rounder-md img-card"
 								src={props.imagem}
 							/>
 						</span>
@@ -38,18 +32,30 @@ export default function Card(props: ICard) {
 					</div>
 				</div>
 				<div className="card-content">
+					<p className="h3 m-0">{props.titulo}</p>
 					<p>{props.descricao}</p>
-					<p className="text-down-01">{props.publicado_em}</p>
+					<p className="text-down-01">
+						<FriendlyDate dateString={props.publicado_em} />
+					</p>
 				</div>
 				<div className="card-footer">
 					<div className="d-flex flex-row-reverse">
 						<div>
-							<button
-								className="br-button"
-								type="button"
-							>
-								Comentar
-							</button>
+							{auth.access ? (
+								<button
+									className="br-button primary"
+									type="button"
+								>
+									Comentar
+								</button>
+							) : (
+								<Link
+									to={"/login"}
+									className="br-button primary"
+								>
+									Comentar
+								</Link>
+							)}
 						</div>
 					</div>
 				</div>
