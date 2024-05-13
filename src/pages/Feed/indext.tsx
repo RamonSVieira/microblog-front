@@ -31,6 +31,12 @@ function Feed() {
 			<Header />
 
 			<div className="container d-flex mt-4 flex-wrap">
+				<div className="col-3 px-1 create">
+					<div className="h-fixed">
+						<i className="fas fa-plus-circle"></i>
+					</div>
+				</div>
+
 				{pubs ? (
 					pubs.map((pub) => (
 						<Card

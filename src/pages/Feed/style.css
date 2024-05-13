@@ -1,3 +1,22 @@
 .container{
     gap: 0px !important;
 }
+
+.create{
+    background-color: #F0F0F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+}
+
+.create:hover .fa-plus-circle{
+    font-size: 92px;
+}
+
+.fa-plus-circle{
+    width: fit-content;
+    font-size: 80px;
+    transition: .1s font-size ease-in;
+}
