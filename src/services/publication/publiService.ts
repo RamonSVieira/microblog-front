@@ -2,7 +2,7 @@ import axiosInstance from "../common/axiosInstance";
 import { iCreateResponse } from "./types";
 
 class PubliService {
-	async create(formData): Promise<iCreateResponse> {
+	async create(formData: FormData): Promise<iCreateResponse> {
 		try {
 			const response = await axiosInstance.post("publicacao/", formData);
 

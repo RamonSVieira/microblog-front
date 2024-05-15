@@ -20,7 +20,6 @@ function CreatePub({ onSubmitSuccess }: iCreatePub) {
 		publiService
 			.create(formData)
 			.then(() => {
-				// Se o envio for bem-sucedido, chame onSubmitSuccess
 				onSubmitSuccess();
 			})
 			.catch((error) => {

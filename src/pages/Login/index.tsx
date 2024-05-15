@@ -1,10 +1,9 @@
 import Button from "../../components/Button";
 import imgLogin from "../../assets/images/login.png";
 import { useForm } from "react-hook-form";
-import UserService from "../../services/user/UserService";
 
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/useAuth";
 
 function Login() {
@@ -76,6 +75,11 @@ function Login() {
 						</div>
 						<Button label="Login" />
 					</form>
+
+					<p>
+						Não possui uma conta?{" "}
+						<Link to={"/register"}>Cadastre-se</Link>
+					</p>
 				</div>
 
 				<div className="col justify-content-center img">

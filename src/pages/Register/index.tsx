@@ -3,13 +3,11 @@ import imgLogin from "../../assets/images/login.png";
 import { useForm } from "react-hook-form";
 
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserService from "../../services/user/UserService";
-import { useAuth } from "../../context/AuthProvider/useAuth";
 
 function Register() {
 	const navigate = useNavigate();
-	const auth = useAuth();
 
 	const {
 		register,
@@ -95,6 +93,10 @@ function Register() {
 						</div>
 						<Button label="Login" />
 					</form>
+
+					<p>
+						Já possui uma conta? <Link to={"/login"}>Entre</Link>
+					</p>
 				</div>
 
 				<div className="col justify-content-center img">

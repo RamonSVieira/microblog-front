@@ -40,7 +40,7 @@ function Feed() {
 
 			<div className="container d-flex mt-4 flex-wrap">
 				<div
-					className="col-3 px-1 create"
+					className="col-3 px-1 create card"
 					onClick={() => setOpenModal(true)}
 				>
 					<div className="h-fixed">
