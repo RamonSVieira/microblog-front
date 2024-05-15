@@ -1,0 +1,8 @@
+.upload-button{
+    width: 100% !important;
+}
+
+#textarea-id1 {
+    height: 120px;
+    resize: none;
+}

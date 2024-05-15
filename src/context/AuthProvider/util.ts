@@ -1,18 +1,28 @@
 import UserService from "../../services/user/UserService";
 import { IAuth } from "./types";
 
-export function setUserLocalStorage(user: IAuth | null) {
-	localStorage.setItem("u", JSON.stringify(user));
+export function setUserLocalStorage(user: IAuth) {
+	localStorage.setItem("access", user.access);
+	localStorage.setItem("refresh", user.refresh);
+}
+
+export function removeUserLocalStorage() {
+	localStorage.removeItem("access");
+	localStorage.removeItem("refresh");
 }
 
 export function getUserLocalStorage() {
-	const json = localStorage.getItem("u");
+	const access = localStorage.getItem("access");
+	const refresh = localStorage.getItem("refresh");
 
-	if (!json) {
+	if (!access || !refresh) {
 		return null;
 	}
 
-	const user = JSON.parse(json);
+	const user = {
+		access: access,
+		refresh: refresh,
+	};
 
 	return user ?? null;
 }

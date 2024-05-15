@@ -1,7 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 import { IAuthProvider, IContext, IAuth } from "./types";
-import UserService from "../../services/user/UserService";
-import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from "./util";
+import {
+	getUserLocalStorage,
+	LoginRequest,
+	removeUserLocalStorage,
+	setUserLocalStorage,
+} from "./util";
 
 export const AuthContext = createContext<IContext>({} as IContext);
 
@@ -9,10 +13,12 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 	const [user, setUser] = useState<IAuth | null>();
 
 	useEffect(() => {
-		const user = getUserLocalStorage();
+		const userLocal = getUserLocalStorage();
 
-		if (user) {
-			setUser(user);
+		console.log(userLocal);
+
+		if (userLocal) {
+			setUser(userLocal);
 		}
 	}, []);
 
@@ -21,7 +27,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
 		const payload = {
 			access: response.access,
-			refresh: response.token,
+			refresh: response.refresh,
 		};
 
 		setUser(payload);
@@ -30,7 +36,7 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 
 	async function logout() {
 		setUser(null);
-		setUserLocalStorage(null);
+		removeUserLocalStorage();
 	}
 
 	return (

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "../pages/Login";
 import { ProtectedLayout } from "./protected";
-import Feed from "../pages/Feed/indext";
+import Feed from "../pages/Feed";
 import Register from "../pages/Register";
 
 function Rotas() {

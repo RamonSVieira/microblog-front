@@ -1,6 +1,6 @@
 export interface IAuth {
-	refresh?: string;
-	access?: string;
+	refresh: string;
+	access: string;
 }
 
 export interface IContext extends IAuth {
