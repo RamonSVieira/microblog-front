@@ -1,6 +1,6 @@
 export interface LoginResponse {
 	access: string;
-	token: string;
+	refresh: string;
 	user: {
 		id: number;
 		username: string;

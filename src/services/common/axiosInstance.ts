@@ -5,14 +5,15 @@ const axiosInstance = axios.create({
 });
 
 function getToken(): string | null {
-	return localStorage.getItem("token");
+	return localStorage.getItem("access");
 }
 
 axiosInstance.interceptors.request.use(
 	(config) => {
 		const accessToken = getToken();
+
 		if (accessToken != null) {
-			config.headers.Authorization = `Token ${accessToken}`;
+			config.headers.Authorization = `Bearer ${accessToken}`;
 		}
 		return config;
 	},
