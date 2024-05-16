@@ -2,13 +2,19 @@ import { useForm } from "react-hook-form";
 import "./styles.css";
 import Button from "../Button";
 import publiService from "../../services/publication/publiService";
+import Upload from "../Upload";
 
 interface iCreatePub {
 	onSubmitSuccess: () => void;
 }
 
 function CreatePub({ onSubmitSuccess }: iCreatePub) {
-	const { handleSubmit, register } = useForm();
+	const {
+		handleSubmit,
+		register,
+		control,
+		formState: { errors },
+	} = useForm();
 
 	const formData = new FormData();
 
@@ -73,9 +79,11 @@ function CreatePub({ onSubmitSuccess }: iCreatePub) {
 					<div className="upload-list"></div>
 				</div> */}
 
-				<input
-					type="file"
-					{...register("imagem")}
+				<Upload
+					label="Imagem"
+					name="imagem"
+					control={control}
+					// error={errors.imagem}
 				/>
 
 				<div className="br-textarea">
