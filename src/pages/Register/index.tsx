@@ -1,10 +1,19 @@
 import Button from "../../components/Button";
 import imgLogin from "../../assets/images/login.png";
+import UserService from "../../services/user/UserService";
+import * as yup from "yup";
+
 import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./style.css";
-import { Link, useNavigate } from "react-router-dom";
-import UserService from "../../services/user/UserService";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+const schema = yup.object().shape({
+	name: yup.string().required("O nome do usuário é um campo obrigatório"),
+	username: yup.string().required("O nome de usuário é um campo obrigatório"),
+	password: yup.string().required("A senha é um campo obrigatório"),
+});
 
 function Register() {
 	const navigate = useNavigate();
@@ -13,7 +22,9 @@ function Register() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
 
 	async function dataHandler(data: any) {
 		try {
@@ -35,7 +46,11 @@ function Register() {
 						className=" d-flex flex-column justify-content-center mr-10"
 					>
 						<div className="mb-3">
-							<div className="br-input input-highlight">
+							<div
+								className={`br-input input-highlight ${
+									errors.name ? "danger" : ""
+								}`}
+							>
 								<label
 									className="sr-only"
 									htmlFor="name"
@@ -51,10 +66,28 @@ function Register() {
 										{...register("name")}
 									/>
 								</div>
+
+								{errors.name !== undefined && (
+									<span
+										className="feedback danger"
+										role="alert"
+										id="danger"
+									>
+										<i
+											className="fas fa-times-circle"
+											aria-hidden="true"
+										></i>
+										{errors.name?.message}
+									</span>
+								)}
 							</div>
 						</div>
 						<div className="mb-3">
-							<div className="br-input input-highlight">
+							<div
+								className={`br-input input-highlight ${
+									errors.username ? "danger" : ""
+								}`}
+							>
 								<label
 									className="sr-only"
 									htmlFor="username"
@@ -70,10 +103,28 @@ function Register() {
 										{...register("username")}
 									/>
 								</div>
+
+								{errors.username !== undefined && (
+									<span
+										className="feedback danger"
+										role="alert"
+										id="danger"
+									>
+										<i
+											className="fas fa-times-circle"
+											aria-hidden="true"
+										></i>
+										{errors.username?.message}
+									</span>
+								)}
 							</div>
 						</div>
 						<div className="mb-3">
-							<div className="br-input input-highlight">
+							<div
+								className={`br-input input-highlight ${
+									errors.password ? "danger" : ""
+								}`}
+							>
 								<label
 									className="sr-only"
 									htmlFor="password"
@@ -89,6 +140,20 @@ function Register() {
 										{...register("password")}
 									/>
 								</div>
+
+								{errors.password !== undefined && (
+									<span
+										className="feedback danger"
+										role="alert"
+										id="danger"
+									>
+										<i
+											className="fas fa-times-circle"
+											aria-hidden="true"
+										></i>
+										{errors.password?.message}
+									</span>
+								)}
 							</div>
 						</div>
 						<Button label="Login" />

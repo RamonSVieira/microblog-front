@@ -1,10 +1,18 @@
 import Button from "../../components/Button";
 import imgLogin from "../../assets/images/login.png";
-import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import "./style.css";
+import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthProvider/useAuth";
+
+import "./style.css";
+
+const schema = yup.object().shape({
+	username: yup.string().required("Nome de usuário é um campo obrigatório"),
+	password: yup.string().required("Senha é um campo obrigatório"),
+});
 
 function Login() {
 	const navigate = useNavigate();
@@ -14,7 +22,9 @@ function Login() {
 		register,
 		handleSubmit,
 		formState: { errors },
-	} = useForm();
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
 
 	async function dataHandler(data: any) {
 		try {
@@ -36,7 +46,11 @@ function Login() {
 						className=" d-flex flex-column justify-content-center mr-10"
 					>
 						<div className="mb-3">
-							<div className="br-input input-highlight">
+							<div
+								className={`br-input input-highlight ${
+									errors.username ? "danger" : ""
+								}`}
+							>
 								<label
 									className="sr-only"
 									htmlFor="username"
@@ -52,10 +66,28 @@ function Login() {
 										{...register("username")}
 									/>
 								</div>
+
+								{errors.username !== undefined && (
+									<span
+										className="feedback danger"
+										role="alert"
+										id="danger"
+									>
+										<i
+											className="fas fa-times-circle"
+											aria-hidden="true"
+										></i>
+										{errors.username?.message}
+									</span>
+								)}
 							</div>
 						</div>
 						<div className="mb-3">
-							<div className="br-input input-highlight">
+							<div
+								className={`br-input input-highlight ${
+									errors.username ? "danger" : ""
+								}`}
+							>
 								<label
 									className="sr-only"
 									htmlFor="password"
@@ -71,6 +103,20 @@ function Login() {
 										{...register("password")}
 									/>
 								</div>
+
+								{errors.password !== undefined && (
+									<span
+										className="feedback danger"
+										role="alert"
+										id="danger"
+									>
+										<i
+											className="fas fa-times-circle"
+											aria-hidden="true"
+										></i>
+										{errors.password?.message}
+									</span>
+								)}
 							</div>
 						</div>
 						<Button label="Login" />
