@@ -15,8 +15,6 @@ export const AuthProvider = ({ children }: IAuthProvider) => {
 	useEffect(() => {
 		const userLocal = getUserLocalStorage();
 
-		console.log(userLocal);
-
 		if (userLocal) {
 			setUser(userLocal);
 		}

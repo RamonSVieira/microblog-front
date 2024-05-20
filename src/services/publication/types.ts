@@ -10,3 +10,22 @@ export interface iCreateResponse {
 	};
 	publicado_em: string;
 }
+
+export interface iPubComments {
+	id: number;
+	autor: {
+		id: number;
+		username: string;
+		nome: string;
+	};
+	publicacao: number;
+	mensagem: string;
+	publicado_em: string;
+}
+
+export interface iPubCommentsResponse {
+	count: number;
+	next: string;
+	previous: string;
+	results: iPubComments[];
+}

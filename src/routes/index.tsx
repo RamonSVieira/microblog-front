@@ -3,6 +3,7 @@ import Login from "../pages/Login";
 import { ProtectedLayout } from "./protected";
 import Feed from "../pages/Feed";
 import Register from "../pages/Register";
+import Detail from "../features/Publications/Detail";
 
 function Rotas() {
 	return (
@@ -19,6 +20,11 @@ function Rotas() {
 				<Route
 					path="/feed"
 					element={<Feed />}
+				/>
+
+				<Route
+					path="/pub/:id/details"
+					element={<Detail />}
 				/>
 
 				{/* <Route

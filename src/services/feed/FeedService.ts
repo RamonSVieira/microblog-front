@@ -1,5 +1,5 @@
 import axiosInstance from "../common/axiosInstance";
-import { IFeedResponse } from "./types";
+import { IFeed, IFeedResponse } from "./types";
 
 class FeedService {
 	async get(page: number): Promise<IFeedResponse> {
@@ -8,6 +8,20 @@ class FeedService {
 
 			if (response.status === 200) {
 				return response.data as IFeedResponse;
+			} else {
+				throw new Error("Falha");
+			}
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async getPub(id: number): Promise<IFeed> {
+		try {
+			const response = await axiosInstance.get(`/publicacao/${id}/`);
+
+			if (response.status === 200) {
+				return response.data as IFeed;
 			} else {
 				throw new Error("Falha");
 			}
