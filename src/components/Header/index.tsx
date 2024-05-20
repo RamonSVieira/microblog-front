@@ -76,45 +76,18 @@ export default function Header() {
 					</div>
 				</div>
 				<div className="header-bottom">
-					<div className="header-menu">
+					<div className="header-menu d-flex justify-items-between align-items-center">
 						<div className="header-info">
 							<div className="header-title">Mini Blog</div>
 							<div className="header-subtitle">Olá blogueiro</div>
 						</div>
 					</div>
-					<div className="header-search">
-						<div className="br-input has-icon">
-							<label htmlFor="searchbox-68089">
-								Texto da pesquisa
-							</label>
-							<input
-								id="searchbox-68089"
-								type="text"
-								placeholder="O que você procura?"
-							/>
-							<button
-								className="br-button circle small"
-								type="button"
-								aria-label="Pesquisar"
-							>
-								<i
-									className="fas fa-search"
-									aria-hidden="true"
-								></i>
-							</button>
-						</div>
-						<button
-							className="br-button circle search-close ml-1"
-							type="button"
-							aria-label="Fechar Busca"
-							data-dismiss="search"
-						>
-							<i
-								className="fas fa-times"
-								aria-hidden="true"
-							></i>
-						</button>
-					</div>
+					<Link
+						className="d-flex align-items-center text-up-02 mr-4"
+						to={"/feed"}
+					>
+						Feed
+					</Link>
 				</div>
 			</div>
 		</header>

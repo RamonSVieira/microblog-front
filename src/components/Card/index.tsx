@@ -8,7 +8,7 @@ export default function Card(props: ICard) {
 	const auth = useAuth();
 
 	return (
-		<div className="col-3 px-1">
+		<div className="">
 			<div className="br-card hover h-fixed">
 				<div className="card-header d-flex flex-column">
 					<span

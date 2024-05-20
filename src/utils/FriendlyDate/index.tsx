@@ -9,7 +9,7 @@ function FriendlyDate({ dateString }: IDate) {
 
 	const formattedDate = format(dateObject, "dd/MM/yyyy 'às' HH:mm");
 
-	return <span>{formattedDate}</span>;
+	return <>{formattedDate}</>;
 }
 
 export default FriendlyDate;

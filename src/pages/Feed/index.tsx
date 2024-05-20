@@ -8,6 +8,7 @@ import Modal from "../../components/Modal";
 
 import "./style.css";
 import CreatePub from "../../components/CreatePub";
+import { Link } from "react-router-dom";
 
 function Feed() {
 	const [pubs, setPubs] = useState<IFeed[]>([]);
@@ -40,7 +41,7 @@ function Feed() {
 
 			<div className="container d-flex mt-4 flex-wrap">
 				<div
-					className="col-3 px-1 create card"
+					className="col-3 create card"
 					onClick={() => setOpenModal(true)}
 				>
 					<div className="h-fixed">
@@ -50,14 +51,20 @@ function Feed() {
 
 				{pubs ? (
 					pubs.map((pub) => (
-						<Card
-							key={pub.id}
-							titulo={pub.titulo}
-							descricao={pub.descricao}
-							autor={pub.autor}
-							imagem={pub.imagem}
-							publicado_em={pub.publicado_em}
-						/>
+						<Link
+							to={`/pub/${pub.id}/details`}
+							state={pub}
+							className="col-3"
+						>
+							<Card
+								key={pub.id}
+								titulo={pub.titulo}
+								descricao={pub.descricao}
+								autor={pub.autor}
+								imagem={pub.imagem}
+								publicado_em={pub.publicado_em}
+							/>
+						</Link>
 					))
 				) : (
 					<h1>Não existem publicações</h1>
