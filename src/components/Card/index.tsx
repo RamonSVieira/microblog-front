@@ -1,5 +1,5 @@
 import { ICard } from "./types";
-import FriendlyDate from "../../utils/FriendlyDate";
+import { FriendlyDate } from "../../utils/FriendlyDate";
 import { useAuth } from "../../context/AuthProvider/useAuth";
 import { Link } from "react-router-dom";
 import "./style.css";
@@ -35,7 +35,7 @@ export default function Card(props: ICard) {
 					<p className="h3 m-0">{props.titulo}</p>
 					<p>{props.descricao}</p>
 					<p className="text-down-01">
-						<FriendlyDate dateString={props.publicado_em} />
+						{FriendlyDate(props.publicado_em)}
 					</p>
 				</div>
 				<div className="card-footer">
