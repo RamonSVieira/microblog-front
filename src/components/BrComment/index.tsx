@@ -1,7 +1,10 @@
-import FriendlyDate from "../../utils/FriendlyDate";
 import { iBrComment } from "./types";
+import "./style.css";
+import { formatTimeAgo } from "../../utils/FriendlyDate";
 
 function BrComment(props: iBrComment) {
+	function formatDate(date: string) {}
+
 	return (
 		<div className="pl-4 mt-4 d-flex align-items-center">
 			<span
@@ -17,9 +20,7 @@ function BrComment(props: iBrComment) {
 			</span>
 
 			<p className="text-bold mr-2 mb-0">{props.nome}</p>
-			<p className="mr-2 mb-0">
-				<FriendlyDate dateString={props.data} />
-			</p>
+			<p className="mr-2 mb-0 nowrap">{formatTimeAgo(props.data)}</p>
 			<p className="mb-0">{props.message}</p>
 		</div>
 	);

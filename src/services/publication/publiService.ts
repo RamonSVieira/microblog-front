@@ -1,5 +1,9 @@
 import axiosInstance from "../common/axiosInstance";
-import { iCreateResponse, iPubCommentsResponse } from "./types";
+import {
+	iCreateCommentResponse,
+	iCreateResponse,
+	iPubCommentsResponse,
+} from "./types";
 
 class PubliService {
 	async create(formData: FormData): Promise<iCreateResponse> {
@@ -26,6 +30,26 @@ class PubliService {
 				return response.data as iPubCommentsResponse;
 			} else {
 				throw new Error("Falha");
+			}
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async comment(
+		publicacao: number,
+		mensagem: string
+	): Promise<iCreateCommentResponse> {
+		try {
+			const response = await axiosInstance.post("comentario/", {
+				publicacao,
+				mensagem,
+			});
+
+			if (response.status === 201) {
+				return response.data as iCreateCommentResponse;
+			} else {
+				throw new Error("Falha ao comentar");
 			}
 		} catch (error) {
 			throw error;

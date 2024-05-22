@@ -29,3 +29,15 @@ export interface iPubCommentsResponse {
 	previous: string;
 	results: iPubComments[];
 }
+
+export interface iCreateCommentResponse {
+	id: number;
+	autor: {
+		id: number;
+		username: string;
+		nome: string;
+	};
+	publicacao: number;
+	mensagem: string;
+	publicado_em: string;
+}
